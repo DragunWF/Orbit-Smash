@@ -7,15 +7,15 @@ public sealed class GameState : MonoBehaviour
     private int score = 0;
     private MainSceneUI mainSceneUi;
 
+    private void Awake()
+    {
+        mainSceneUi = GetComponent<MainSceneUI>();
+    }
+
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
         Debug.Log(score);
         mainSceneUi.SetScoreText(score);
-    }
-
-    private void Awake()
-    {
-        mainSceneUi = GetComponent<MainSceneUI>();
     }
 }
