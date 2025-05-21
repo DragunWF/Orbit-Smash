@@ -4,13 +4,16 @@ using UnityEngine;
 
 public sealed class Planet : MonoBehaviour
 {
+    private const string SCRIPTS_GAME_OBJECT = "Scripts";
     private const string PLANET_DESPAWN_TAG = "PlanetDespawnArea";
 
     [SerializeField] float speed = 1f;
 
+    private GameState gameState;
+
     private void Start()
     {
-
+        gameState = GameObject.Find(SCRIPTS_GAME_OBJECT).GetComponent<GameState>();
     }
 
     private void Update()
@@ -20,6 +23,7 @@ public sealed class Planet : MonoBehaviour
 
     private void OnMouseDown()
     {
+        gameState.UpdateScore(10);
         Destroy(gameObject);
     }
 

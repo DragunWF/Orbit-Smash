@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState : MonoBehaviour
+public sealed class GameState : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private int score = 0;
+    private MainSceneUI mainSceneUi;
+
+    public void UpdateScore(int scoreToAdd)
     {
-        
+        score += scoreToAdd;
+        Debug.Log(score);
+        mainSceneUi.SetScoreText(score);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        mainSceneUi = GetComponent<MainSceneUI>();
     }
 }
