@@ -18,7 +18,6 @@ public sealed class Planet : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Planet clicked!");
         Destroy(gameObject);
     }
 }
