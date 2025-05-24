@@ -1293,7 +1293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24691dc1a4e330c4981aa1562870e2b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficultyInterval: 10
+  difficultyInterval: 6
 --- !u!4 &1721036035 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 39933610671858082, guid: 19e3335283bfc8a4c9187d3e5e7bb884, type: 3}

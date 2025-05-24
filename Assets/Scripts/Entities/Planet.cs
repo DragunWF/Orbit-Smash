@@ -26,7 +26,12 @@ public sealed class Planet : MonoBehaviour
 
         planetAnimatorControllers = new RuntimeAnimatorController[] {
             Resources.Load<RuntimeAnimatorController>("Animations/Barren Animator"),
-            Resources.Load<RuntimeAnimatorController>("Animations/Gas Giant Yellow Animator")
+            Resources.Load<RuntimeAnimatorController>("Animations/Gas Giant Yellow Animator"),
+            Resources.Load<RuntimeAnimatorController>("Animations/Ice World Animator"),
+            Resources.Load<RuntimeAnimatorController>("Animations/Islands Animator"),
+            Resources.Load<RuntimeAnimatorController>("Animations/Lava World Animator"),
+            Resources.Load<RuntimeAnimatorController>("Animations/Terran Dry Animator"),
+            Resources.Load<RuntimeAnimatorController>("Animations/Terran Wet Animator")
         };
 
         planetAnimator.runtimeAnimatorController = planetAnimatorControllers[Random.Range(0, planetAnimatorControllers.Length)];

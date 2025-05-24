@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class DifficultyScaler : MonoBehaviour
 {
+    [SerializeField] private readonly float difficultyInterval = 6f; // seconds between difficulty increases
+
     private int difficultyLevel = 0;
 
     private float minPlanetSpeed = 0.5f;
     private float maxPlanetSpeed = 1f;
 
-    [SerializeField] private float difficultyInterval = 10f; // seconds between difficulty increases
     private float timer = 0f;
     private float secondsSurvived = 0f;
 
