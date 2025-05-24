@@ -5,6 +5,7 @@ using UnityEngine;
 public sealed class Planet : MonoBehaviour
 {
     private const string PLANET_DESPAWN_TAG = "PlanetDespawnArea";
+    private const int BASE_SCORE_GAIN = 5;
 
     [SerializeField] float speed = 1f;
 
@@ -22,7 +23,7 @@ public sealed class Planet : MonoBehaviour
 
     private void OnMouseDown()
     {
-        gameState.UpdateScore(10);
+        gameState.UpdateScore(BASE_SCORE_GAIN);
         Destroy(gameObject);
     }
 

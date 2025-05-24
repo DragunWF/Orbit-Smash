@@ -48,4 +48,9 @@ public class DifficultyScaler : MonoBehaviour
     {
         return Random.Range(minPlanetSpeed, maxPlanetSpeed);
     }
+
+    public int GetDifficultyLevel()
+    {
+        return difficultyLevel;
+    }
 }
