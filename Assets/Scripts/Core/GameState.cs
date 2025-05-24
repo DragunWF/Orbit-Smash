@@ -25,6 +25,6 @@ public sealed class GameState : MonoBehaviour
 
     public void EndGame()
     {
-        // TODO: Implement fade effect and high scores
+        // TODO: Implement fade effect and high scores as well as scene transition to game over scene
     }
 }

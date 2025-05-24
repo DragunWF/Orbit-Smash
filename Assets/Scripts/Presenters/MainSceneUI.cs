@@ -52,7 +52,7 @@ public sealed class MainSceneUI : MonoBehaviour
 
     public void SetHeartCount(int heartCount)
     {
-        if (heartCount < 0 || heartCount >= healthSystem.GetMaxHealth())
+        if (heartCount < 0 || heartCount > healthSystem.GetMaxHealth())
         {
             return;
         }

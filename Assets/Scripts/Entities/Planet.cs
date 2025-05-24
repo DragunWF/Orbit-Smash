@@ -31,6 +31,7 @@ public sealed class Planet : MonoBehaviour
         healthSystem = FindObjectOfType<HealthSystem>();
 
         RandomizePlanetSprite();
+        RandomizePlanetSpeed();
     }
 
     private void RandomizePlanetSprite()
@@ -46,11 +47,6 @@ public sealed class Planet : MonoBehaviour
         };
 
         planetAnimator.runtimeAnimatorController = planetAnimatorControllers[Random.Range(0, planetAnimatorControllers.Length)];
-    }
-
-    private void Start()
-    {
-        RandomizePlanetSpeed();
     }
 
     private void RandomizePlanetSpeed()
