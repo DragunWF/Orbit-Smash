@@ -26,6 +26,7 @@ public sealed class Planet : MonoBehaviour
 
         difficultyScaler = FindObjectOfType<DifficultyScaler>();
         particlePlayer = FindObjectOfType<ParticlePlayer>();
+        gameState = FindObjectOfType<GameState>();
 
         RandomizePlanetSprite();
     }
@@ -47,8 +48,11 @@ public sealed class Planet : MonoBehaviour
 
     private void Start()
     {
-        gameState = FindObjectOfType<GameState>();
+        RandomizePlanetSpeed();
+    }
 
+    private void RandomizePlanetSpeed()
+    {
         float speedIncrease = difficultyScaler.GetDifficultyLevel() * BASE_DIFFICULTY_INCREASE_IN_SPEED;
         speed = Random.Range(BASE_MIN_SPEED + speedIncrease, BASE_MAX_SPEED + speedIncrease);
     }

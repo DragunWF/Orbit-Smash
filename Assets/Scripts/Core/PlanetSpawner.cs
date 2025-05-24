@@ -24,11 +24,6 @@ public sealed class PlanetSpawner : MonoBehaviour
         StartCoroutine(SpawnProjectiles());
     }
 
-    private void Update()
-    {
-
-    }
-
     private List<GameObject> GetSpawnPoints()
     {
         List<GameObject> output = new();

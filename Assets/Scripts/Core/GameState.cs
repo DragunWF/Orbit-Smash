@@ -18,7 +18,7 @@ public sealed class GameState : MonoBehaviour
 
     public void UpdateScore(int scoreToAdd)
     {
-        score += scoreToAdd * difficultyScaler.GetDifficultyLevel();
+        score += scoreToAdd + (ADDITIONAL_SCORE_PER_DIFFICULTY_LEVEL * difficultyScaler.GetDifficultyLevel());
         Debug.Log(score);
         mainSceneUi.SetScoreText(score);
     }
