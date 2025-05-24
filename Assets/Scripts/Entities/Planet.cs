@@ -16,9 +16,20 @@ public sealed class Planet : MonoBehaviour
     private GameState gameState;
     private DifficultyScaler difficultyScaler;
 
+    private Animator planetAnimator;
+    private RuntimeAnimatorController[] planetAnimatorControllers;
+
     private void Awake()
     {
         difficultyScaler = GameObject.Find(Constants.SCRIPTS_GAME_OBJECT).GetComponent<DifficultyScaler>();
+        planetAnimator = GetComponent<Animator>();
+
+        planetAnimatorControllers = new RuntimeAnimatorController[] {
+            Resources.Load<RuntimeAnimatorController>("Animations/Barren Animator"),
+            Resources.Load<RuntimeAnimatorController>("Animations/Gas Giant Yellow Animator")
+        };
+
+        planetAnimator.runtimeAnimatorController = planetAnimatorControllers[Random.Range(0, planetAnimatorControllers.Length)];
     }
 
     private void Start()
