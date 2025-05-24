@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class DifficultyScaler : MonoBehaviour
     private float maxPlanetSpeed = 1f;
 
     [SerializeField] private float difficultyInterval = 10f; // seconds between difficulty increases
-    private float timer = 0f;
+    private float secondsSurvived = 0f;
 
     private MainSceneUI mainSceneUI;
     private GameState gameState;
@@ -25,13 +26,15 @@ public class DifficultyScaler : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;
+        secondsSurvived += Time.deltaTime;
 
-        if (timer >= difficultyInterval)
+        if (secondsSurvived >= difficultyInterval)
         {
             IncreaseDifficulty();
-            timer = 0f;
+            secondsSurvived = 0f;
         }
+
+        mainSceneUI.SetTimeSurvivedText((int)Math.Floor(secondsSurvived));
     }
 
     private void IncreaseDifficulty()
@@ -46,7 +49,7 @@ public class DifficultyScaler : MonoBehaviour
 
     public float GetRandomPlanetSpeed()
     {
-        return Random.Range(minPlanetSpeed, maxPlanetSpeed);
+        return UnityEngine.Random.Range(minPlanetSpeed, maxPlanetSpeed);
     }
 
     public int GetDifficultyLevel()
