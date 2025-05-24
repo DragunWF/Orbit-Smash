@@ -22,4 +22,9 @@ public sealed class GameState : MonoBehaviour
         Debug.Log(score);
         mainSceneUi.SetScoreText(score);
     }
+
+    public void EndGame()
+    {
+        // TODO: Implement fade effect and high scores
+    }
 }

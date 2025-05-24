@@ -16,6 +16,7 @@ public sealed class Planet : MonoBehaviour
     private GameState gameState;
     private DifficultyScaler difficultyScaler;
     private ParticlePlayer particlePlayer;
+    private HealthSystem healthSystem;
 
     private Animator planetAnimator;
     private RuntimeAnimatorController[] planetAnimatorControllers;
@@ -27,6 +28,7 @@ public sealed class Planet : MonoBehaviour
         difficultyScaler = FindObjectOfType<DifficultyScaler>();
         particlePlayer = FindObjectOfType<ParticlePlayer>();
         gameState = FindObjectOfType<GameState>();
+        healthSystem = FindObjectOfType<HealthSystem>();
 
         RandomizePlanetSprite();
     }
@@ -79,7 +81,8 @@ public sealed class Planet : MonoBehaviour
 
     private void OnPlanetBypass()
     {
-        // TODO: Make Player lose health
+        healthSystem.DamageHealth();
+        // TODO: Play damage sound effect
         Destroy(gameObject);
     }
 }
