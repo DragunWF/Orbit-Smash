@@ -7,7 +7,7 @@ public sealed class Planet : MonoBehaviour
     private const string PLANET_DESPAWN_TAG = "PlanetDespawnArea";
     private const int BASE_SCORE_GAIN = 5;
 
-    private const float BASE_DIFFICULTY_INCREASE_IN_SPEED = 0.25f;
+    private const float BASE_DIFFICULTY_INCREASE_IN_SPEED = 0.1f;
     private const float BASE_MIN_SPEED = 0.5f;
     private const float BASE_MAX_SPEED = 3f;
 

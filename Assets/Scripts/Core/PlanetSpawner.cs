@@ -9,8 +9,12 @@ public sealed class PlanetSpawner : MonoBehaviour
     private GameObject planet;
     private List<GameObject> spawnPoints;
 
+    private DifficultyScaler difficultyScaler;
+
     private void Awake()
     {
+        difficultyScaler = GetComponent<DifficultyScaler>();
+
         planet = Resources.Load("Prefabs/Planet") as GameObject;
         spawnPoints = GetSpawnPoints();
     }
@@ -48,17 +52,17 @@ public sealed class PlanetSpawner : MonoBehaviour
 
     private IEnumerator SpawnProjectiles()
     {
-        float spawnDelay = 3.5f;
-        yield return new WaitForSeconds(spawnDelay);
+        // Initial delay before the first planet
+        yield return new WaitForSeconds(3.5f);
 
-        int spawnCount = 0;
         while (true)
         {
-            yield return new WaitForSeconds(1);
             Instantiate(planet, ChooseRandomPoint());
-            spawnCount++;
+            float currentDelay = difficultyScaler.GetCurrentSpawnDelay();
+            yield return new WaitForSeconds(currentDelay);
         }
     }
+
 
     private Transform ChooseRandomPoint()
     {
