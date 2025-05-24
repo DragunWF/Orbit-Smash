@@ -1222,6 +1222,7 @@ GameObject:
   - component: {fileID: 1696126479}
   - component: {fileID: 1696126481}
   - component: {fileID: 1696126482}
+  - component: {fileID: 1696126483}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -1280,6 +1281,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a1984c11380fa49bd77d9edd73aa5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1696126483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696126477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24691dc1a4e330c4981aa1562870e2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficultyInterval: 1
 --- !u!4 &1721036035 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 39933610671858082, guid: 19e3335283bfc8a4c9187d3e5e7bb884, type: 3}
@@ -1648,18 +1662,6 @@ PrefabInstance:
     - target: {fileID: 39933610671858083, guid: 19e3335283bfc8a4c9187d3e5e7bb884, type: 3}
       propertyPath: m_Name
       value: Planet
-      objectReference: {fileID: 0}
-    - target: {fileID: 39933610671858085, guid: 19e3335283bfc8a4c9187d3e5e7bb884, type: 3}
-      propertyPath: m_SortingLayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 39933610671858085, guid: 19e3335283bfc8a4c9187d3e5e7bb884, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 39933610671858085, guid: 19e3335283bfc8a4c9187d3e5e7bb884, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19e3335283bfc8a4c9187d3e5e7bb884, type: 3}
