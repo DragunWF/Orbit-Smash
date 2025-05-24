@@ -1508,9 +1508,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1322238363
+  m_SortingLayer: -1
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: af3aea732b7abb34c860d0c56aaf144a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1648,6 +1648,18 @@ PrefabInstance:
     - target: {fileID: 39933610671858083, guid: 19e3335283bfc8a4c9187d3e5e7bb884, type: 3}
       propertyPath: m_Name
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 39933610671858085, guid: 19e3335283bfc8a4c9187d3e5e7bb884, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 39933610671858085, guid: 19e3335283bfc8a4c9187d3e5e7bb884, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 39933610671858085, guid: 19e3335283bfc8a4c9187d3e5e7bb884, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19e3335283bfc8a4c9187d3e5e7bb884, type: 3}
