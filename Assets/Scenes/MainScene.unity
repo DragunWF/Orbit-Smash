@@ -1518,6 +1518,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a1984c11380fa49bd77d9edd73aa5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fullHeartSprite: {fileID: 773652151, guid: cd0b6a8ae08ad01499d0092f2a403ad0, type: 3}
+  emptyHeartSprite: {fileID: -1425677218, guid: cd0b6a8ae08ad01499d0092f2a403ad0, type: 3}
 --- !u!114 &1696126483
 MonoBehaviour:
   m_ObjectHideFlags: 0

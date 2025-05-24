@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public sealed class MainSceneUI : MonoBehaviour
 {
+    [SerializeField] Sprite fullHeartSprite, emptyHeartSprite;
+
     private const string SCORE_TEXT = "ScoreText";
     private const string DIFFICULTY_TEXT = "DifficultyText";
     private const string TIME_SURVIVED_TEXT = "TimeSurvivedText";
@@ -13,7 +15,6 @@ public sealed class MainSceneUI : MonoBehaviour
 
     private TextMeshProUGUI scoreText, difficultyText, timeSurvivedText;
     private Image heartImage1, heartImage2, heartImage3;
-    private Sprite fullHeartSprite, emptyHeartSprite;
 
     private HealthSystem healthSystem;
 
@@ -26,9 +27,6 @@ public sealed class MainSceneUI : MonoBehaviour
         heartImage1 = GameObject.Find($"{HEART_IMAGE}1").GetComponent<Image>();
         heartImage2 = GameObject.Find($"{HEART_IMAGE}2").GetComponent<Image>();
         heartImage3 = GameObject.Find($"{HEART_IMAGE}3").GetComponent<Image>();
-
-        fullHeartSprite = Resources.Load("Sprites/Heart") as Sprite;
-        emptyHeartSprite = Resources.Load("Sprites/Heart") as Sprite;
 
         healthSystem = FindObjectOfType<HealthSystem>();
     }
