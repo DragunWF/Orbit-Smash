@@ -15,15 +15,23 @@ public sealed class Planet : MonoBehaviour
 
     private GameState gameState;
     private DifficultyScaler difficultyScaler;
+    private ParticlePlayer particlePlayer;
 
     private Animator planetAnimator;
     private RuntimeAnimatorController[] planetAnimatorControllers;
 
     private void Awake()
     {
-        difficultyScaler = GameObject.Find(Constants.SCRIPTS_GAME_OBJECT).GetComponent<DifficultyScaler>();
         planetAnimator = GetComponent<Animator>();
 
+        difficultyScaler = FindObjectOfType<DifficultyScaler>();
+        particlePlayer = FindObjectOfType<ParticlePlayer>();
+
+        RandomizePlanetSprite();
+    }
+
+    private void RandomizePlanetSprite()
+    {
         planetAnimatorControllers = new RuntimeAnimatorController[] {
             Resources.Load<RuntimeAnimatorController>("Animations/Barren Animator"),
             Resources.Load<RuntimeAnimatorController>("Animations/Gas Giant Yellow Animator"),
@@ -39,7 +47,7 @@ public sealed class Planet : MonoBehaviour
 
     private void Start()
     {
-        gameState = GameObject.Find(Constants.SCRIPTS_GAME_OBJECT).GetComponent<GameState>();
+        gameState = FindObjectOfType<GameState>();
 
         float speedIncrease = difficultyScaler.GetDifficultyLevel() * BASE_DIFFICULTY_INCREASE_IN_SPEED;
         speed = Random.Range(BASE_MIN_SPEED + speedIncrease, BASE_MAX_SPEED + speedIncrease);
@@ -52,6 +60,7 @@ public sealed class Planet : MonoBehaviour
 
     private void OnMouseDown()
     {
+        particlePlayer.PlayExplosion(transform.position);
         gameState.UpdateScore(BASE_SCORE_GAIN);
         Destroy(gameObject);
     }
@@ -60,7 +69,13 @@ public sealed class Planet : MonoBehaviour
     {
         if (other.gameObject.CompareTag(PLANET_DESPAWN_TAG))
         {
-            Destroy(gameObject);
+            OnPlanetBypass();
         }
+    }
+
+    private void OnPlanetBypass()
+    {
+        // TODO: Make Player lose health
+        Destroy(gameObject);
     }
 }
