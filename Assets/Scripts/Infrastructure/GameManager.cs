@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     private const string GAME_SCENE = "GameScene";
     private const string GAME_OVER_MENU = "GameOverMenu";
 
+    private const string START_TRANSITION = "Start";
+    private const float TRANSITION_TIME = 1f;
+    [SerializeField] Animator transitionAnimator;
+
     private readonly Dictionary<string, int> scenes = new(); // Scene name and Build Index
 
     private void Awake()
@@ -20,10 +24,16 @@ public class GameManager : MonoBehaviour
 
     #region Load Methods
 
-    public void LoadStartMenu() => LoadScene(scenes[START_MENU]);
-    public void LoadGameScene() => LoadScene(scenes[GAME_SCENE]);
-    public void LoadGameOverMenu() => LoadScene(scenes[GAME_OVER_MENU]);
-    private void LoadScene(int index) => SceneManager.LoadScene(index);
+    public void LoadStartMenu() => StartCoroutine(LoadScene(scenes[START_MENU]));
+    public void LoadGameScene() => StartCoroutine(LoadScene(scenes[GAME_SCENE]));
+    public void LoadGameOverMenu() => StartCoroutine(LoadScene(scenes[GAME_OVER_MENU]));
+
+    private IEnumerator LoadScene(int index)
+    {
+        transitionAnimator.SetTrigger(START_TRANSITION);
+        yield return new WaitForSeconds(TRANSITION_TIME);
+        SceneManager.LoadScene(index);
+    }
 
     #endregion
 }

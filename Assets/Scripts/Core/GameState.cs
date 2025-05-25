@@ -12,11 +12,13 @@ public sealed class GameState : MonoBehaviour
 
     private MainSceneUI mainSceneUi;
     private DifficultyScaler difficultyScaler;
+    private GameManager gameManager;
 
     private void Awake()
     {
         mainSceneUi = GetComponent<MainSceneUI>();
         difficultyScaler = GetComponent<DifficultyScaler>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -33,6 +35,8 @@ public sealed class GameState : MonoBehaviour
             isNewHighScore = true;
         }
         // TODO: Implement fade effect and high scores as well as scene transition to game over scene
+
+        gameManager.LoadGameOverMenu();
     }
 
     public static int GetHighScore() => highScore;
