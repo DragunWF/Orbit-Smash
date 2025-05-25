@@ -10,17 +10,20 @@ public class HealthSystem : MonoBehaviour
 
     private MainSceneUI mainSceneUI;
     private GameState gameState;
+    private CameraShake cameraShake;
 
     private void Awake()
     {
         mainSceneUI = FindObjectOfType<MainSceneUI>();
         gameState = FindObjectOfType<GameState>();
+        cameraShake = FindObjectOfType<CameraShake>();
     }
 
     public void DamageHealth()
     {
         currentHealth--;
         mainSceneUI.SetHeartCount(currentHealth);
+        cameraShake.TriggerShake();
 
         if (currentHealth <= 0)
         {
