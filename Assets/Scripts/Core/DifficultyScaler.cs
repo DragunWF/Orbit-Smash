@@ -62,11 +62,11 @@ public class DifficultyScaler : MonoBehaviour
 
     public float GetCurrentSpawnDelay()
     {
-        const float MAX_SPAWN_DELAY = 3.5f;
+        const float MAX_SPAWN_DELAY = 3.0f;
         const float MIN_SPAWN_DELAY = 0.35f;
 
         // Base delay is 3.5s, decreases by 0.15s per difficulty level
-        float delay = MAX_SPAWN_DELAY - (difficultyLevel * 0.15f);
+        float delay = MAX_SPAWN_DELAY - (difficultyLevel * 0.2f);
         return Mathf.Clamp(delay, MIN_SPAWN_DELAY, MAX_SPAWN_DELAY); // prevents it from going too fast
     }
 }
