@@ -20,13 +20,13 @@ public class HealthSystem : MonoBehaviour
     public void DamageHealth()
     {
         currentHealth--;
+        mainSceneUI.SetHeartCount(currentHealth);
+
         if (currentHealth <= 0)
         {
             gameState.EndGame();
             return;
         }
-
-        mainSceneUI.SetHeartCount(currentHealth);
     }
 
     public int GetMaxHealth() => MAX_HEALTH;
