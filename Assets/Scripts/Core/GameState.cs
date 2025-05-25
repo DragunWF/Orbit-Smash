@@ -39,17 +39,17 @@ public sealed class GameState : MonoBehaviour
         gameManager.LoadGameOverMenu();
     }
 
+    public static void ResetGameState()
+    {
+        isNewHighScore = false;
+        score = 0;
+    }
+
     #region Getter Methods
 
     public static int GetHighScore() => highScore;
     public static int GetScore() => score;
     public static bool IsNewHighScore() => isNewHighScore;
-
-    #endregion
-
-    #region Setter Methods
-
-    public static void SetIsNewHighScore(bool value) => isNewHighScore = value;
 
     #endregion
 }

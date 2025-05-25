@@ -32,7 +32,7 @@ public class GameOverMenuUI : MonoBehaviour
         scoreText.text = $"Score: {Utils.FormatNumber(GameState.GetScore())}";
         newHighScoreText.gameObject.SetActive(GameState.IsNewHighScore());
 
-        GameState.SetIsNewHighScore(false);
+        GameState.ResetGameState();
     }
 
     public void OnRetryButtonClicked()
