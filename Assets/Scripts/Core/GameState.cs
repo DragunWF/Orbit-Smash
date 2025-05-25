@@ -6,9 +6,9 @@ public sealed class GameState : MonoBehaviour
 {
     private const int ADDITIONAL_SCORE_PER_DIFFICULTY_LEVEL = 5;
 
+    private static int highScore = 0;
+    private static bool isNewHighScore = false;
     private int score = 0;
-    private int highScore = 0;
-    private bool isNewHighScore = false;
 
     private MainSceneUI mainSceneUi;
     private DifficultyScaler difficultyScaler;
@@ -35,4 +35,6 @@ public sealed class GameState : MonoBehaviour
         }
         // TODO: Implement fade effect and high scores as well as scene transition to game over scene
     }
+
+    public static int GetHighScore() => highScore;
 }

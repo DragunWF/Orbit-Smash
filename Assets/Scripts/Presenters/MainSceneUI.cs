@@ -35,7 +35,7 @@ public sealed class MainSceneUI : MonoBehaviour
 
     public void SetScoreText(int score)
     {
-        scoreText.text = $"Score: {FormatNumber(score)}";
+        scoreText.text = $"Score: {Utils.FormatNumber(score)}";
     }
 
     public void SetDifficultyText(int difficulty)
@@ -45,7 +45,7 @@ public sealed class MainSceneUI : MonoBehaviour
 
     public void SetTimeSurvivedText(int seconds)
     {
-        timeSurvivedText.text = $"Time Survived in Seconds: {FormatNumber(seconds)}";
+        timeSurvivedText.text = $"Time Survived in Seconds: {Utils.FormatNumber(seconds)}";
     }
 
     public void SetHeartCount(int heartCount)
@@ -63,13 +63,4 @@ public sealed class MainSceneUI : MonoBehaviour
     }
 
     #endregion
-
-    private string FormatNumber(int number)
-    {
-        if (number < 1000)
-        {
-            return number.ToString();
-        }
-        return number.ToString("N0");
-    }
 }
