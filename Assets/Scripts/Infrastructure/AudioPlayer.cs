@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class AudioPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Dictionary<string, AudioClip> clips = new();
+    private Dictionary<string, float> volumes = new();
+
+    private void Awake()
     {
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayClickHit()
     {
 
+    }
+
+    public void PlayClickMiss()
+    {
+
+    }
+
+    private void PlayClip(string fileName)
+    {
+        if (clips[fileName] != null)
+        {
+            Vector2 cameraPos = Camera.main.transform.position;
+            AudioSource.PlayClipAtPoint(clips[fileName], cameraPos, volumes[fileName]);
+        }
     }
 }
