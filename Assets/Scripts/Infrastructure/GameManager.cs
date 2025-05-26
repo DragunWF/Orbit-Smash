@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     private const string START_TRANSITION = "Start";
     private const float TRANSITION_TIME = 1f;
-    [SerializeField] Animator transitionAnimator;
+    private Animator transitionAnimator;
 
     private readonly Dictionary<string, int> scenes = new(); // Scene name and Build Index
 
@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
         scenes.Add(START_MENU, 0);
         scenes.Add(GAME_SCENE, 1);
         scenes.Add(GAME_OVER_MENU, 2);
+
+        transitionAnimator = GetComponent<Animator>();
     }
 
     #region Load Methods
