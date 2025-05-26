@@ -34,7 +34,6 @@ public sealed class GameState : MonoBehaviour
             highScore = score;
             isNewHighScore = true;
         }
-        // TODO: Implement fade effect and high scores as well as scene transition to game over scene
 
         gameManager.LoadGameOverMenu();
     }
