@@ -15,8 +15,8 @@ public class PowerupSpawner : MonoBehaviour
     {
         spawnPoints = Utils.GetSpawnPoints();
         powerups = new GameObject[] {
-            Resources.Load<GameObject>("Prefabs/Star"),
-            Resources.Load<GameObject>("Prefabs/Galaxy")
+            Resources.Load<GameObject>("Prefabs/StarPowerup"),
+            Resources.Load<GameObject>("Prefabs/GalaxyPowerup")
         };
     }
 
