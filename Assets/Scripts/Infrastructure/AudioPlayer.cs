@@ -8,6 +8,9 @@ public class AudioPlayer : MonoBehaviour
     [SerializeField] AudioClip clickMissSoundClip;
     [SerializeField] AudioClip damageSoundClip;
 
+    private const float defaultBackgroundMusicVolume = 0.085f;
+    private AudioSource backgroundMusicSource;
+
     #region Play Clip Methods
 
     public void PlayClickHit() => PlayClip(clickHitSoundClip, 5f);
@@ -22,6 +25,19 @@ public class AudioPlayer : MonoBehaviour
         {
             Vector2 cameraPos = Camera.main.transform.position;
             AudioSource.PlayClipAtPoint(clip, cameraPos, volume);
+        }
+    }
+
+    private void Awake()
+    {
+        backgroundMusicSource = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        if (backgroundMusicSource != null)
+        {
+            backgroundMusicSource.volume = Settings.IsMusicOn() ? defaultBackgroundMusicVolume : 0;
         }
     }
 }
