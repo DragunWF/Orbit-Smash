@@ -14,10 +14,12 @@ public class GameOverMenuUI : MonoBehaviour
     private TextMeshProUGUI newHighScoreText;
 
     private GameManager gameManager;
+    private AudioPlayer audioPlayer;
 
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
+        audioPlayer = FindObjectOfType<AudioPlayer>();
 
         highScoreText = GameObject.Find(HIGH_SCORE_TEXT).GetComponent<TextMeshProUGUI>();
         scoreText = GameObject.Find(SCORE_TEXT).GetComponent<TextMeshProUGUI>();
@@ -37,11 +39,13 @@ public class GameOverMenuUI : MonoBehaviour
 
     public void OnRetryButtonClicked()
     {
+        audioPlayer.PlayClickHit();
         gameManager.LoadGameScene();
     }
 
     public void OnStartMenuButtonClicked()
     {
+        audioPlayer.PlayClickHit();
         gameManager.LoadStartMenu();
     }
 }
