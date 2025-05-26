@@ -4,8 +4,6 @@ using UnityEngine;
 
 public sealed class PlanetSpawner : MonoBehaviour
 {
-    private const string SPAWN_POINT_NAME = "SpawnPoint";
-
     private GameObject planet;
     private List<GameObject> spawnPoints;
 
@@ -16,33 +14,12 @@ public sealed class PlanetSpawner : MonoBehaviour
         difficultyScaler = GetComponent<DifficultyScaler>();
 
         planet = Resources.Load("Prefabs/Planet") as GameObject;
-        spawnPoints = GetSpawnPoints();
+        spawnPoints = Utils.GetSpawnPoints();
     }
 
     private void Start()
     {
         StartCoroutine(SpawnProjectiles());
-    }
-
-    private List<GameObject> GetSpawnPoints()
-    {
-        List<GameObject> output = new();
-
-        int count = 1;
-        while (true)
-        {
-            GameObject spawnPoint = GameObject.Find($"{SPAWN_POINT_NAME} ({count})");
-            count++;
-
-            if (spawnPoint == null)
-            {
-                break;
-            }
-
-            output.Add(spawnPoint);
-        }
-
-        return output;
     }
 
     private IEnumerator SpawnProjectiles()
