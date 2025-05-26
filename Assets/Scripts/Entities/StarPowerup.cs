@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class StarPowerup : MonoBehaviour
 {
-    private const int BASE_SCORE_GAIN = 125;
+    private const int BASE_SCORE_GAIN = 150;
 
     [SerializeField] float speed = 3f;
 
     private AudioPlayer audioPlayer;
     private GameState gameState;
     private ParticlePlayer particlePlayer;
-    private DifficultyScaler difficultyScaler;
 
     private void Awake()
     {
         audioPlayer = FindObjectOfType<AudioPlayer>();
         gameState = FindObjectOfType<GameState>();
         particlePlayer = FindObjectOfType<ParticlePlayer>();
-        difficultyScaler = FindObjectOfType<DifficultyScaler>();
     }
 
     private void Update()
@@ -29,7 +27,7 @@ public class StarPowerup : MonoBehaviour
     private void OnMouseDown()
     {
         audioPlayer.PlayClickHit();
-        particlePlayer.PlayExplosion(transform.position);
+        particlePlayer.PlayStarExplosion(transform.position);
         gameState.UpdateScore(BASE_SCORE_GAIN);
         Destroy(gameObject);
     }
