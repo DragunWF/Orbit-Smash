@@ -4,30 +4,22 @@ using UnityEngine;
 
 public class AudioPlayer : MonoBehaviour
 {
-    private Dictionary<string, AudioClip> clips = new();
-    private Dictionary<string, float> volumes = new();
+    [SerializeField] AudioClip clickHitSoundClip;
+    [SerializeField] AudioClip clickMissSoundClip;
 
-    private void Awake()
+    #region Play Clip Methods
+
+    public void PlayClickHit() => PlayClip(clickHitSoundClip, 5f);
+    public void PlayClickMiss() => PlayClip(clickMissSoundClip, 6f);
+
+    #endregion
+
+    private void PlayClip(AudioClip clip, float volume)
     {
-
-    }
-
-    public void PlayClickHit()
-    {
-
-    }
-
-    public void PlayClickMiss()
-    {
-
-    }
-
-    private void PlayClip(string fileName)
-    {
-        if (clips[fileName] != null)
+        if (clip != null)
         {
             Vector2 cameraPos = Camera.main.transform.position;
-            AudioSource.PlayClipAtPoint(clips[fileName], cameraPos, volumes[fileName]);
+            AudioSource.PlayClipAtPoint(clip, cameraPos, volume);
         }
     }
 }

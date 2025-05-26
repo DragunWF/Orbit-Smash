@@ -17,6 +17,7 @@ public sealed class Planet : MonoBehaviour
     private DifficultyScaler difficultyScaler;
     private ParticlePlayer particlePlayer;
     private HealthSystem healthSystem;
+    private AudioPlayer audioPlayer;
 
     private Animator planetAnimator;
     private RuntimeAnimatorController[] planetAnimatorControllers;
@@ -29,6 +30,7 @@ public sealed class Planet : MonoBehaviour
         particlePlayer = FindObjectOfType<ParticlePlayer>();
         gameState = FindObjectOfType<GameState>();
         healthSystem = FindObjectOfType<HealthSystem>();
+        audioPlayer = FindObjectOfType<AudioPlayer>();
 
         RandomizePlanetSprite();
         RandomizePlanetSpeed();
@@ -62,6 +64,7 @@ public sealed class Planet : MonoBehaviour
 
     private void OnMouseDown()
     {
+        audioPlayer.PlayClickHit();
         particlePlayer.PlayExplosion(transform.position);
         gameState.UpdateScore(BASE_SCORE_GAIN);
         Destroy(gameObject);
