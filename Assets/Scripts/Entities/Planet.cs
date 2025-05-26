@@ -80,8 +80,8 @@ public sealed class Planet : MonoBehaviour
 
     private void OnPlanetBypass()
     {
+        audioPlayer.PlayDamage();
         healthSystem.DamageHealth();
-        // TODO: Play damage sound effect
         Destroy(gameObject);
     }
 }

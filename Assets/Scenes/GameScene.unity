@@ -958,6 +958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickHitSoundClip: {fileID: 8300000, guid: 6d1c80928089948458ffefbe90b88d1c, type: 3}
   clickMissSoundClip: {fileID: 8300000, guid: d8249c2ea0f419b46ba5cec0cdd550e7, type: 3}
+  damageSoundClip: {fileID: 8300000, guid: 1d8ad320f54f11c4e8e4e3b90a1db4a5, type: 3}
 --- !u!1 &837130062
 GameObject:
   m_ObjectHideFlags: 0
