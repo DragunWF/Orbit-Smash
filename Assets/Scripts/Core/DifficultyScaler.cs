@@ -6,32 +6,28 @@ using UnityEngine;
 public class DifficultyScaler : MonoBehaviour
 {
     [Header("Difficulty Settings")]
-    [SerializeField] private readonly float difficultyInterval = 4f; // Faster progression
-    [SerializeField] private readonly int insaneDifficultyStart = 10; // When it gets truly crazy
+    [SerializeField] private readonly float difficultyInterval = 7f; // Slightly longer progression window
+    [SerializeField] private readonly int insaneDifficultyStart = 15; // Delayed insanity phase
 
     [Header("Speed Settings")]
     [SerializeField] private float minPlanetSpeed = 0.5f;
     [SerializeField] private float maxPlanetSpeed = 1f;
-    [SerializeField] private readonly float speedMultiplier = 1.5f; // Exponential speed growth
+    [SerializeField] private readonly float speedMultiplier = 1.2f; // Less aggressive exponential growth
 
     [Header("Spawn Settings")]
-    [SerializeField] private readonly float maxSpawnDelay = 3.0f;
-    [SerializeField] private readonly float minSpawnDelay = 0.1f; // Insanely fast spawning
-    [SerializeField] private readonly float spawnReductionRate = 0.3f; // Aggressive spawn reduction
+    [SerializeField] private readonly float maxSpawnDelay = 3.5f;
+    [SerializeField] private readonly float minSpawnDelay = 0.85f; // Less severe minimum
+    [SerializeField] private readonly float spawnReductionRate = 0.1f; // Gentler reduction per level
 
     private int difficultyLevel = 0;
     private float timer = 0f;
     private float secondsSurvived = 0f;
 
     private MainSceneUI mainSceneUI;
-    private GameState gameState;
 
-    private void Start()
+    private void Awake()
     {
-        GameObject scriptsGameObj = GameObject.Find(Constants.SCRIPTS_GAME_OBJECT);
-
-        mainSceneUI = scriptsGameObj.GetComponent<MainSceneUI>();
-        gameState = scriptsGameObj.GetComponent<GameState>();
+        mainSceneUI = FindObjectOfType<MainSceneUI>();
     }
 
     private void Update()
@@ -54,27 +50,23 @@ public class DifficultyScaler : MonoBehaviour
 
         if (difficultyLevel <= 5)
         {
-            // Early game: reasonable increases
-            minPlanetSpeed += 0.3f;
-            maxPlanetSpeed += 0.4f;
+            minPlanetSpeed += 0.2f;
+            maxPlanetSpeed += 0.3f;
         }
         else if (difficultyLevel <= insaneDifficultyStart)
         {
-            // Mid game: aggressive increases
-            minPlanetSpeed += 0.5f;
-            maxPlanetSpeed += 0.7f;
+            minPlanetSpeed += 0.3f;
+            maxPlanetSpeed += 0.4f;
         }
         else
         {
-            // Late game: INSANE exponential growth
             minPlanetSpeed *= speedMultiplier;
             maxPlanetSpeed *= speedMultiplier;
 
-            // Bonus: Add random chaos at high levels
-            if (difficultyLevel > 15)
+            if (difficultyLevel > 18)
             {
-                minPlanetSpeed += UnityEngine.Random.Range(0.5f, 2f);
-                maxPlanetSpeed += UnityEngine.Random.Range(1f, 3f);
+                minPlanetSpeed += UnityEngine.Random.Range(0.2f, 1f);
+                maxPlanetSpeed += UnityEngine.Random.Range(0.5f, 1.5f);
             }
         }
 
@@ -97,54 +89,52 @@ public class DifficultyScaler : MonoBehaviour
 
         if (difficultyLevel <= 5)
         {
-            // Early: gentle reduction
-            delay = maxSpawnDelay - (difficultyLevel * 0.25f);
+            delay = maxSpawnDelay - (difficultyLevel * 0.15f);
         }
         else if (difficultyLevel <= insaneDifficultyStart)
         {
-            // Mid: aggressive reduction
-            delay = 2f - (difficultyLevel * spawnReductionRate);
+            delay = 2.25f - (difficultyLevel * spawnReductionRate);
         }
         else
         {
-            // Late: exponentially faster spawning
-            float exponent = (difficultyLevel - insaneDifficultyStart) * 0.5f;
-            delay = 1f / Mathf.Pow(2f, exponent);
+            float exponent = (difficultyLevel - insaneDifficultyStart) * 0.4f;
+            delay = 1f / Mathf.Pow(1.8f, exponent);
 
-            // Ultra-late game: multiple planets per frame territory
-            if (difficultyLevel > 20)
+            if (difficultyLevel > 22)
             {
-                delay = minSpawnDelay / (difficultyLevel - 15);
+                delay = minSpawnDelay / (difficultyLevel - 18);
             }
         }
 
         return Mathf.Clamp(delay, minSpawnDelay, maxSpawnDelay);
     }
 
-    // Bonus methods for extreme difficulty
     public bool ShouldSpawnMultiplePlanets()
     {
-        return difficultyLevel > 12 && UnityEngine.Random.Range(0f, 1f) < 0.3f;
+        return difficultyLevel > 10 && UnityEngine.Random.Range(0f, 1f) < 0.25f;
     }
 
     public int GetMultiSpawnCount()
     {
-        if (difficultyLevel > 18)
-            return UnityEngine.Random.Range(2, 5); // 2-4 planets at once
-        else if (difficultyLevel > 15)
-            return UnityEngine.Random.Range(2, 3); // 2-3 planets at once
-        else
-            return 2; // Just 2 planets
+        if (difficultyLevel > 20)
+        {
+            return UnityEngine.Random.Range(2, 3);
+        }
+        else if (difficultyLevel > 16)
+        {
+            return UnityEngine.Random.Range(1, 2);
+        }
+
+        return 1;
     }
 
     public bool IsImpossibleTerritory()
     {
-        return difficultyLevel > 15;
+        return difficultyLevel > 20;
     }
 
     public float GetDifficultyProgress()
     {
-        // No cap - this goes to infinity!
         return difficultyLevel / 10f;
     }
 }
